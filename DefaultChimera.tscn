@@ -1,0 +1,87 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Chimera.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Bodyparts/Turtle/TurtleBody.png" type="Texture" id=3]
+[ext_resource path="res://Bodyparts/Wolf/WolfBody.png" type="Texture" id=4]
+[ext_resource path="res://Bodyparts/Wolf/WolfHead.png" type="Texture" id=5]
+[ext_resource path="res://Bodyparts/Turtle/TurtleForelimb.png" type="Texture" id=6]
+[ext_resource path="res://Bodyparts/Wolf/WolfForelimbs.png" type="Texture" id=7]
+[ext_resource path="res://Bodyparts/Turtle/TurtleBackleg.png" type="Texture" id=8]
+[ext_resource path="res://Bodyparts/Wolf/WolfBacklegs.png" type="Texture" id=9]
+[ext_resource path="res://Bodyparts/Turtle/TurtleHead.png" type="Texture" id=10]
+[ext_resource path="res://Heart.gd" type="Script" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.5
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Chimera" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -34.0
+margin_top = -52.0
+margin_right = 38.0
+margin_bottom = -38.0
+step = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Body" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 1.00113, 0 )
+frames = SubResource( 1 )
+frame = 1
+
+[node name="Head" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( -68, -28 )
+frames = SubResource( 2 )
+
+[node name="Forelimb" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( -38, 24 )
+frames = SubResource( 3 )
+frame = 1
+
+[node name="Backlegs" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 30, 16 )
+frames = SubResource( 4 )
+frame = 1
+
+[node name="Heart" type="Node" parent="."]
+script = ExtResource( 11 )
